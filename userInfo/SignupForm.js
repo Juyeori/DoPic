@@ -15,6 +15,7 @@ const SignupForm = () => {
         email,
     };
     console.log(data)
+    //ipconfig 값 넣기
     axios.post('http://172.20.10.9:3001/User', data)
     .then(response => {
       console.log(response.data);
