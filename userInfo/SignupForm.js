@@ -17,7 +17,7 @@ const SignupForm = () => {
     console.log(data)
     //ipconfig 값 넣기
     //172.20.10.9
-    axios.post('http://10.168.26.14:3001/User', data)
+    axios.post('http://localhost:3001/User', data)
     .then(response => {
       console.log(response.data);
     })
@@ -28,6 +28,7 @@ const SignupForm = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>회원 가입</Text>
       <TextInput
         style={styles.input}
         placeholder="아이디"
@@ -59,6 +60,11 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginBottom: 20,
     },
     input: {
       width: '80%',
