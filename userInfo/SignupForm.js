@@ -5,6 +5,7 @@ import axios from 'axios';
 const SignupForm = () => {
   const [_id, setId] = useState('');
   const [email, setEmail] = useState('');
+  const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignup = () => {
@@ -12,7 +13,7 @@ const SignupForm = () => {
     const data = {
         _id,
         password,
-        email,
+        nickName,
     };
     console.log(data)
     //ipconfig 값 넣기
@@ -31,7 +32,7 @@ const SignupForm = () => {
       <Text style={styles.title}>회원 가입</Text>
       <TextInput
         style={styles.input}
-        placeholder="아이디"
+        placeholder="이메일"
         value={_id}
         onChangeText={(text) => setId(text)}
       />
@@ -44,9 +45,15 @@ const SignupForm = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder="이메일"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
+        placeholder="비밀번호 확인"
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="닉네임"
+        value={nickName}
+        onChangeText={(text) => setNickName(text)}
       />
       <TouchableOpacity style={styles.button} onPress={handleSignup}>
         <Text style={styles.buttonText}>회원가입</Text>

@@ -57,10 +57,12 @@ const LoginForm = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>로그인</Text>
+
+      <Text style={styles.title}>두픽과 함께 하는</Text>
+      <Text style={styles.title}>슬기로운 두피 관리</Text>
       <TextInput
         style={styles.input}
-        placeholder="아이디"
+        placeholder="이메일"
         value={_id}
         onChangeText={(text) => setId(text)}
       />
@@ -74,6 +76,9 @@ const LoginForm = () => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>로그인</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('FindAccountForm')}>
+          <Text style={styles.footerText}>아이디/비밀번호 찾기</Text>
+        </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>로그아웃</Text>
       </TouchableOpacity>
@@ -95,21 +100,31 @@ const styles = StyleSheet.create({
   input: {
     width: '80%',
     height: 40,
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-  },
+    width: 328
+},
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#008376',
+    width: 328,
+    height:48,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  footerText: {
+    color: '#999999',
+    fontSize: 14,
+    marginRight: 20,
+    marginLeft:20,
   },
 });
 
