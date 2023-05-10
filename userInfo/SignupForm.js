@@ -18,7 +18,7 @@ const SignupForm = () => {
     console.log(data)
     //ipconfig 값 넣기
     //172.20.10.9
-    axios.post('http://172.20.10.9:3001/User', data)
+    axios.post('https://dopic.herokuapp.com/User', data)
     .then(response => {
       console.log(response.data);
     })

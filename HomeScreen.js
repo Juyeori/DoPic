@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import BottomTabBar from './BottomTabBar';
 
 const HomeScreen = () => {
     const handleLogout = async () => {
@@ -10,7 +11,7 @@ const HomeScreen = () => {
             const token = await AsyncStorage.getItem('token');
         
             // 서버로 로그아웃 요청을 전송하는 코드
-            const response = await axios.post('http://172.20.10.9:3001/logout', {}, {
+            const response = await axios.post('https://dopic.herokuapp.com/logout', {}, {
             headers: { Authorization: `Bearer ${token}` },
             });
         
@@ -31,6 +32,7 @@ const HomeScreen = () => {
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>로그아웃</Text>
       </TouchableOpacity>
+      <BottomTabBar/>
     </View>
     
   );

@@ -18,7 +18,7 @@ const LoginForm = () => {
     };
     console.log(data)
     // ipconfig 값 넣기
-    axios.post('http://172.20.10.9:3001/login', data)
+    axios.post('https://dopic.herokuapp.com/login', data)
     .then(async (response) => {
       console.log(response.data);
       // 토큰을 AsyncStorage에 저장합니다.
@@ -39,7 +39,7 @@ const LoginForm = () => {
       const token = await AsyncStorage.getItem('token');
   
       // 서버로 로그아웃 요청을 전송하는 코드
-      const response = await axios.post('http://172.20.10.9:3001/logout', {}, {
+      const response = await axios.post('https://dopic.herokuapp.com/logout', {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
   
