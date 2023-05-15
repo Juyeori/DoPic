@@ -3,8 +3,10 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import BottomTabBar from './BottomTabBar';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
     const handleLogout = async () => {
         try {
             // AsyncStorage에서 토큰을 가져옵니다.
@@ -21,6 +23,7 @@ const HomeScreen = () => {
             console.log(response.data);
             console.log("로그아웃");
             // 로그아웃 처리 완료 후 로그인 화면으로 이동하는 코드
+            navigation.navigate('Main');
             // 이 부분은 해당하는 화면 구현에 따라 달라질 수 있습니다.
         } catch (error) {
             console.error(error);
@@ -31,8 +34,7 @@ const HomeScreen = () => {
       <Text style={styles.text}>Welcome to Home Screen</Text>
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>로그아웃</Text>
-      </TouchableOpacity>
-      <BottomTabBar/>
+      </TouchableOpacity>   
     </View>
     
   );

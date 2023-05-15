@@ -1,21 +1,31 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const BottomTabBar = () => {
   const navigation = useNavigation();
+
+  const handleTabPress = (screenName) => {
+    navigation.navigate(screenName);
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.tabItem} onPress={() => navigation.navigate('AIHairDiagnosisScreen')}>
-        <Text style={styles.tabText}>AI두피 진단</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tabItem} onPress={() => navigation.navigate('ScalpDiaryScreen')}>
-        <Text style={styles.tabText}>두피 일기장</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tabItem} onPress={() => navigation.navigate('MyPageScreen')}>
-        <Text style={styles.tabText}>마이페이지</Text>
-      </TouchableOpacity>
+      <TouchableWithoutFeedback onPress={() => handleTabPress('AIHairDiagnosisScreen')}>
+        <View style={styles.tabItem}>
+          <Text style={styles.tabText}>AI두피 진단</Text>
+        </View>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTabPress('ScalpDiaryScreen')}>
+        <View style={styles.tabItem}>
+          <Text style={styles.tabText}>두피 일기장</Text>
+        </View>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTabPress('MyPageScreen')}>
+        <View style={styles.tabItem}>
+          <Text style={styles.tabText}>마이페이지</Text>
+        </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 };

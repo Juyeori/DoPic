@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import LoginForm from './userInfo/LoginForm';
 import SignupForm from './userInfo/SignupForm';
+import BottomTabBar from './BottomTabBar';
 
 const MainScreen = ({ navigation }) => {
   return (
