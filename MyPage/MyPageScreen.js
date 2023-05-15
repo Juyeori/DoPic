@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList,StyleSheet } from 'react-native';
+import BottomTabBar from '../BottomTabBar';
 
 const MyPageScreen = () => {
   const data = [
@@ -22,8 +23,20 @@ const MyPageScreen = () => {
         keyExtractor={item => item.id}
         style={{ padding: 16 }}
       />
+      <View style={styles.bottomTabBarContainer}>
+              <BottomTabBar />
+      </View> 
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  bottomTabBarContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+});
 
 export default MyPageScreen;

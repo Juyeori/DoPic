@@ -1,47 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import DiagnosisStart from './DiagnosisStart';
+import BottomTabBar from '../BottomTabBar';
 
 const AIHairDiagnosisScreen = () => {
-  const handleTakePhoto = async () => {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    if (status === 'granted') {
-      const result = await ImagePicker.launchCameraAsync();
-      if (!result.cancelled) {
-        // Do something with the captured photo
-        console.log(result);
-      }
-    } else {
-      // Camera permission denied
-      console.log('Camera permission denied');
-    }
+  const [startDiagnosis, setStartDiagnosis] = useState(false);
+
+  const handleStartDiagnosis = () => {
+    setStartDiagnosis(true);
   };
 
-  const handleUploadPhoto = async () => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status === 'granted') {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) {
-        // Do something with the selected photo
-        console.log(result);
-      }
-    } else {
-      // Media library permission denied
-      console.log('Media library permission denied');
-    }
-  };
+  if (startDiagnosis) {
+    return <DiagnosisStart />;
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-        <Text style={styles.text}>AIHairDiagnosisScreen</Text>
-        <TouchableOpacity style={styles.button} onPress={handleTakePhoto}>
-          <Text style={styles.buttonText}>Take Photo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleUploadPhoto}>
-          <Text style={styles.buttonText}>Upload Photo</Text>
+        <Text style={styles.text}>두피 진단을 시작하려면 버튼을 눌러주세요.</Text>
+        <TouchableOpacity style={styles.button} onPress={handleStartDiagnosis}>
+          <Text style={styles.buttonText}>두피 진단 시작</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.bottomTabBarContainer}>
+              <BottomTabBar />
+      </View> 
     </View>
   );
 };
@@ -66,13 +49,17 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
-    marginBottom: 10,
   },
   buttonText: {
     color: '#ffffff',
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+  },bottomTabBarContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 

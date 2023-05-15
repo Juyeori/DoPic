@@ -14,7 +14,7 @@ const MainScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>이메일로 시작하기</Text>
       </TouchableOpacity>
       <View style={styles.footer}>
-        <TouchableOpacity onPress={() => navigation.navigate('SignupForm')}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignupStart')}>
           <Text style={styles.footerText}>회원가입</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('FindAccountForm')}>

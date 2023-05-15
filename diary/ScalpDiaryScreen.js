@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import BottomTabBar from '../BottomTabBar';
 
 const ScalpDiaryScreen = () => {
   return (
@@ -7,6 +8,9 @@ const ScalpDiaryScreen = () => {
       <View style={styles.box}>
         <Text style={styles.text}>Scalp Diary Screen</Text>
       </View>
+      <View style={styles.bottomTabBarContainer}>
+              <BottomTabBar />
+      </View>   
     </View>
   );
 };
@@ -29,6 +33,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     fontWeight: 'bold',
+  },bottomTabBarContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 

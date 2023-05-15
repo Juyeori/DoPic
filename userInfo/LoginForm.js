@@ -50,7 +50,7 @@ const LoginForm = () => {
       console.log(response.data);
       console.log("로그아웃");
       // 로그아웃 처리 완료 후 로그인 화면으로 이동하는 코드
-      
+      navigation.navigate('Main');
       // 이 부분은 해당하는 화면 구현에 따라 달라질 수 있습니다.
     } catch (error) {
       console.error(error);

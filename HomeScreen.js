@@ -34,7 +34,10 @@ const HomeScreen = () => {
       <Text style={styles.text}>Welcome to Home Screen</Text>
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>로그아웃</Text>
-      </TouchableOpacity>   
+      </TouchableOpacity>
+      <View style={styles.bottomTabBarContainer}>
+              <BottomTabBar />
+      </View>   
     </View>
     
   );
@@ -49,6 +52,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     fontWeight: 'bold',
+  },bottomTabBarContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 
