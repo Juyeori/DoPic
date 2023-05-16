@@ -22,7 +22,8 @@ const LoginForm = () => {
     .then(async (response) => {
       console.log(response.data);
       // 토큰을 AsyncStorage에 저장합니다.
-
+      await AsyncStorage.setItem('id', _id);
+      await AsyncStorage.setItem('password', password);
       await AsyncStorage.setItem('token', response.data.token);
       console.log(response.data.token);
       console.log("로그인 성공");

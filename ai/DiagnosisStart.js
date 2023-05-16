@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import BottomTabBar from '../BottomTabBar';
 
 const DiagnosisStart = () => {
   const handleTakePhoto = async () => {
@@ -42,6 +43,9 @@ const DiagnosisStart = () => {
           <Text style={styles.buttonText}>사진 등록</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.bottomTabBarContainer} >
+        <BottomTabBar/>
+      </View>
     </View>
   );
 };
@@ -73,6 +77,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+  },bottomTabBarContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 
