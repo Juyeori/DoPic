@@ -16,6 +16,7 @@ import MyPageScreen from './MyPage/MyPageScreen';
 import BottomTabBar from './BottomTabBar';
 import SignupStart from './userInfo/SignupStart';
 import DiagnosisStart from './ai/DiagnosisStart';
+import SignupSuccess from './userInfo/SIgnupSuccess';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,7 @@ export default function App() {
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ animation: 'default', headerTitle: '', headerShown: false }} />
             <Stack.Screen name="SignupStart" component={SignupStart} options={{ animation: 'default', headerTitle:''}}/>
             <Stack.Screen name="SignupForm" component={SignupForm} options={{ headerTitle: '' }} />
+            <Stack.Screen name="SignupSuccess" component={SignupSuccess} options={{ headerTitle: '', headerShown: false }} />
             <Stack.Screen name="AIHairDiagnosisScreen" component={AIHairDiagnosisScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="DiagnosisStart" component={DiagnosisStart} options={{ headerTitle: '' }} />
             <Stack.Screen name="ScalpDiaryScreen" component={ScalpDiaryScreen} options={{ headerTitle: '' , headerShown: false }} />

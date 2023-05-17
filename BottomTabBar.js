@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   activeTabText: {
-    color: 'blue',
+    color: '#008376',
   },
 });
 

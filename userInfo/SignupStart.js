@@ -56,7 +56,7 @@ const SignupStart = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: isAllAgreed ? '#4CAF50' : '#ccc' }]}
+        style={[styles.button, { backgroundColor: isAllAgreed ? '#008376' : '#ccc' }]}
         disabled={!isAllAgreed}
         onPress={handleContinue}
       >

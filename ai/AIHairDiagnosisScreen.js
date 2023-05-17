@@ -36,12 +36,12 @@ const styles = StyleSheet.create({
   padding: 20,
   },
   text: {
-  fontSize: 20,
+  fontSize: 16,
   fontWeight: 'bold',
   marginBottom: 20,
   },
   button: {
-  backgroundColor: '#2196F3',
+  backgroundColor: '#008376',
   paddingVertical: 10,
   paddingHorizontal: 20,
   borderRadius: 5,

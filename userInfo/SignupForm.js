@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity, Button, StyleSheet } from 'react-native';
 import axios from 'axios';
+import { Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 const SignupForm = () => {
   const [_id, setId] = useState('');
   const [email, setEmail] = useState('');
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigation = useNavigation();
   const handleSignup = () => {
+    
     // 서버로 회원가입 정보를 전송하는 코드
     const data = {
         _id,
@@ -21,9 +25,11 @@ const SignupForm = () => {
     axios.post('https://dopic.herokuapp.com/User', data)
     .then(response => {
       console.log(response.data);
+      navigation.navigate('SignupSuccess');
     })
     .catch(error => {
       console.error(error);
+      Alert.alert("회원가입에 실패하였습니다.")
     });
   };
 
@@ -83,7 +89,7 @@ const styles = StyleSheet.create({
       marginBottom: 10,
     },
     button: {
-      backgroundColor: 'blue',
+      backgroundColor: '#008376',
       padding: 10,
       borderRadius: 5,
     },

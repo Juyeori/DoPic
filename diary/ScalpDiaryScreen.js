@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import BottomTabBar from '../BottomTabBar';
 import { Calendar } from 'react-native-calendars';
@@ -11,7 +11,7 @@ const ScalpDiaryScreen = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [events, setEvents] = useState({});
   const [latestRecord, setLatestRecord] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchRecords();
@@ -22,7 +22,6 @@ const ScalpDiaryScreen = () => {
     try {
       const id = await AsyncStorage.getItem('id');
       const token = await AsyncStorage.getItem('token');
-      setLoading(true);
       const response = await axios.get(`https://dopic.herokuapp.com/recordAll/${id}?token=${token}`);
       const records = response.data;
       const formattedEvents = formatEvents(records);
@@ -31,10 +30,11 @@ const ScalpDiaryScreen = () => {
       // 가장 최근 기록 가져오기
       const latestRecord = getLatestRecord(records);
       setLatestRecord(latestRecord);
+
+      setIsLoading(false); // 데이터 로딩 완료
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false);
+      setIsLoading(false); // 데이터 로딩 실패
     }
   };
 
@@ -68,6 +68,12 @@ const ScalpDiaryScreen = () => {
     navigation.navigate('DetailedReport');
   };
 
+  const theme = {
+    arrowColor: '#008376', // 화살표 색상
+    todayTextColor: '#008376', // 오늘 날짜 색상
+    textMonthFontWeight: 'bold', // 월 글자 두께
+  };
+
   const renderEvents = () => {
     if (selectedDate && events[selectedDate]) {
       return events[selectedDate].map((record, index) => (
@@ -93,41 +99,46 @@ const ScalpDiaryScreen = () => {
     }
   };
 
-  const renderLoading = () => {
-    if (loading) {
-      return (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </View>
-      );
-    } else {
-      return null;
-    }
-  };
-
   return (
     <View style={styles.container}>
-      {renderLoading()}
-      <View style={styles.box}>
-        {latestRecord && (
-          <View>
-            <Text>가장 최근 정보:</Text>
-            <Text>{latestRecord.result}</Text>
-            <Text>{latestRecord.memo.join(", ")}</Text>
+      {isLoading ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="008376" />
+          <Text style={styles.loadingText}>정보를 불러오는 중입니다...</Text>
+        </View>
+      ) : (
+        <View style={styles.box}>
+          {latestRecord && (
+            <View>
+              <Text>가장 최근 정보:</Text>
+              <Text>{latestRecord.result}</Text>
+              <Text>{latestRecord.memo.join(", ")}</Text>
+            </View>
+          )}
+          <View style={styles.calendarContainer}>
+            <Calendar
+              onDayPress={(day) => handleDateSelect(day.dateString)}
+              markedDates={{
+                [selectedDate]: {
+                  selected: true,
+                  selectedColor: '#008376',
+                },
+              }}
+              theme={theme}
+            />
           </View>
-        )}
-        <Calendar
-          onDayPress={(day) => handleDateSelect(day.dateString)}
-          markedDates={{ [selectedDate]: { selected: true } }}
-        />
-        {renderEvents()}
-        {renderDetailedReportButton()}
-      </View>
+          <View style={styles.eventsContainer}>
+            {renderEvents()}
+            {renderDetailedReportButton()}
+          </View>
+        </View>
+      )}
       <View style={styles.bottomTabBarContainer}>
         <BottomTabBar />
       </View>
     </View>
   );
+  
 };
 
 const styles = StyleSheet.create({
@@ -136,6 +147,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   box: {
     backgroundColor: '#e8e8e8',
@@ -157,7 +178,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
-    backgroundColor: 'blue',
+    backgroundColor: '#008376',
     padding: 10,
     borderRadius: 5,
   },
@@ -165,16 +186,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  loadingContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
