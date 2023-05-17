@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import DiagnosisStart from './DiagnosisStart';
+import { useNavigation } from '@react-navigation/native';
 import BottomTabBar from '../BottomTabBar';
 
 const AIHairDiagnosisScreen = () => {
-  const [startDiagnosis, setStartDiagnosis] = useState(false);
+  const navigation = useNavigation();
 
   const handleStartDiagnosis = () => {
-    setStartDiagnosis(true);
+    navigation.navigate('DiagnosisStart');
   };
-
-  if (startDiagnosis) {
-    return <DiagnosisStart />;
-  }
 
   return (
     <View style={styles.container}>
@@ -22,44 +18,45 @@ const AIHairDiagnosisScreen = () => {
           <Text style={styles.buttonText}>두피 진단 시작</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.bottomTabBarContainer}>
-              <BottomTabBar />
-      </View> 
+    <View style={styles.bottomTabBarContainer}>
+      <BottomTabBar />
     </View>
+  </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
   },
   box: {
-    backgroundColor: '#f2f2f2',
-    padding: 20,
+  backgroundColor: '#f2f2f2',
+  padding: 20,
   },
   text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  fontSize: 20,
+  fontWeight: 'bold',
+  marginBottom: 20,
   },
   button: {
-    backgroundColor: '#2196F3',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
+  backgroundColor: '#2196F3',
+  paddingVertical: 10,
+  paddingHorizontal: 20,
+  borderRadius: 5,
   },
   buttonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },bottomTabBarContainer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
+  color: '#ffffff',
+  fontSize: 16,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  },
+  bottomTabBarContainer: {
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  bottom: 0,
   },
 });
 

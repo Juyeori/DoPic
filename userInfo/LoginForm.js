@@ -46,6 +46,8 @@ const LoginForm = () => {
       });
   
       // AsyncStorage에서 토큰을 삭제합니다.
+      await AsyncStorage.removeItem('id');
+      await AsyncStorage.removeItem('password');
       await AsyncStorage.removeItem('token');
   
       console.log(response.data);

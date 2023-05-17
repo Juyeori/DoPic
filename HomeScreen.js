@@ -1,45 +1,52 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import BottomTabBar from './BottomTabBar';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-    const handleLogout = async () => {
-        try {
-            // AsyncStorage에서 토큰을 가져옵니다.
-            const token = await AsyncStorage.getItem('token');
-        
-            // 서버로 로그아웃 요청을 전송하는 코드
-            const response = await axios.post('https://dopic.herokuapp.com/logout', {}, {
-            headers: { Authorization: `Bearer ${token}` },
-            });
-        
-            // AsyncStorage에서 토큰을 삭제합니다.
-            await AsyncStorage.removeItem('token');
-        
-            console.log(response.data);
-            console.log("로그아웃");
-            // 로그아웃 처리 완료 후 로그인 화면으로 이동하는 코드
-            navigation.navigate('Main');
-            // 이 부분은 해당하는 화면 구현에 따라 달라질 수 있습니다.
-        } catch (error) {
-            console.error(error);
-        }
-    };
+
+  const handleSelfDiagnosis = () => {
+    navigation.navigate('SelfDiagnosis');
+  };
+
+  const handlePhotoDiagnosis = () => {
+    navigation.navigate('PhotoDiagnosis');
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Home Screen</Text>
-      <TouchableOpacity style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>로그아웃</Text>
+      <View style={styles.section}>
+        <Text style={styles.title}>최근 두피 상태</Text>
+        <View style={styles.box}>
+          {/* Content for the recent scalp condition */}
+        </View>
+      </View>
+      <View style={styles.section}>
+        <Text style={styles.title}>맞춤 제품 추천</Text>
+        <View style={styles.productContainer}>
+          {/* Add code to display personalized product recommendations */}
+          <View style={styles.productBox}>
+            {/* Product 1 */}
+          </View>
+          <View style={styles.productBox}>
+            {/* Product 2 */}
+          </View>
+          <View style={styles.productBox}>
+            {/* Product 3 */}
+          </View>
+          <View style={styles.productBox}>
+            {/* Product 4 */}
+          </View>
+        </View>
+      </View>
+      <TouchableOpacity style={styles.button} onPress={handleSelfDiagnosis}>
+        <Text style={styles.buttonText}>탈모 자가 진단</Text>
       </TouchableOpacity>
       <View style={styles.bottomTabBarContainer}>
-              <BottomTabBar />
-      </View>   
+        <BottomTabBar />
+      </View>
     </View>
-    
   );
 };
 
@@ -49,10 +56,52 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text: {
-    fontSize: 24,
+  section: {
+    backgroundColor: '#f2f2f2',
+    padding: 20,
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 20,
     fontWeight: 'bold',
-  },bottomTabBarContainer: {
+    marginBottom: 10,
+  },
+  box: {
+    backgroundColor: '#e6e6e6',
+    width: 200,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  productContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+  productBox: {
+    backgroundColor: '#e6e6e6',
+    width: 80,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: '#2196F3',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  bottomTabBarContainer: {
     position: 'absolute',
     left: 0,
     right: 0,
