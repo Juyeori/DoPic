@@ -2,8 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import BottomTabBar from '../BottomTabBar';
+import { useNavigation } from '@react-navigation/native';
 
 const DiagnosisStart = () => {
+  const navigation = useNavigation();
   const handleTakePhoto = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
     if (status === 'granted') {
@@ -19,17 +21,7 @@ const DiagnosisStart = () => {
   };
 
   const handleUploadPhoto = async () => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status === 'granted') {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) {
-        // 선택한 사진으로 처리할 작업을 수행합니다.
-        console.log(result);
-      }
-    } else {
-      // 사진 라이브러리 접근 권한이 거부된 경우
-      console.log('사진 라이브러리 접근 권한이 거부되었습니다');
-    }
+    navigation.navigate('UploadPicture');
   };
 
   return (
