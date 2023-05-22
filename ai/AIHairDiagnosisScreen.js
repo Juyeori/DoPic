@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import BottomTabBar from '../BottomTabBar';
+import guide from '../img/guide.png';
+import Header from '../component/Header';
 
 const AIHairDiagnosisScreen = () => {
   const navigation = useNavigation();
@@ -12,8 +14,11 @@ const AIHairDiagnosisScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Header title="AI 두피 진단"/>
+      </View>
+      <Image source={guide} style={styles.guide} />
       <View style={styles.box}>
-        <Text style={styles.text}>두피 진단을 시작하려면 버튼을 눌러주세요.</Text>
         <TouchableOpacity style={styles.button} onPress={handleStartDiagnosis}>
           <Text style={styles.buttonText}>두피 진단 시작</Text>
         </TouchableOpacity>
@@ -26,13 +31,25 @@ const AIHairDiagnosisScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  guide : {
+    top : '-5%',
+    width: '90%',
+  },
+  header : {
+    top: "-8%",
+    width: '100%',
+  },
   container: {
+  backgroundColor: '#fff',
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
   },
   box: {
-  backgroundColor: '#f2f2f2',
+  bottom: '5%',
+  width: '100%',
+  alignItems : 'center',
+  backgroundColor: '#fff',
   padding: 20,
   },
   text: {
@@ -45,6 +62,7 @@ const styles = StyleSheet.create({
   paddingVertical: 10,
   paddingHorizontal: 20,
   borderRadius: 5,
+  width : '95%',
   },
   buttonText: {
   color: '#ffffff',

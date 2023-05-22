@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import LoginForm from './userInfo/LoginForm';
 import SignupForm from './userInfo/SignupForm';
 import BottomTabBar from './BottomTabBar';
+import logo from './img/Logo.png';
 
 const MainScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Image source={logo} style={styles.logo} />
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('LoginForm')}
@@ -52,6 +54,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff'
+  },
+  logo: {
+    width: 156,
+    height: 156,
+    position: 'absolute',
+    top: 150, // 원하는 위치로 조절해주세요
   },
   button: {
     position: 'absolute',

@@ -38,16 +38,17 @@ export default function App() {
       <NavigationContainer>
         <View style={styles.container}>
           <Stack.Navigator  screenOptions={{
-          animation: 'none' // 화면 전환 애니메이션 효과 없애기
+          animation: 'none', // 화면 전환 애니메이션 효과 없애기
+          headerTitleAlign: 'center'
         }}>
             <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="LoginForm" component={LoginForm} options={{ animation: 'default',headerTitle: '' }}  />
+            <Stack.Screen name="LoginForm" component={LoginForm} options={{ animation: 'default',headerTitle: '로그인' }}  />
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ animation: 'default', headerTitle: '', headerShown: false }} />
-            <Stack.Screen name="SignupStart" component={SignupStart} options={{ animation: 'default', headerTitle:''}}/>
+            <Stack.Screen name="SignupStart" component={SignupStart} options={{ animation: 'default', headerTitle:'회원가입'}}/>
             <Stack.Screen name="SignupForm" component={SignupForm} options={{ headerTitle: '' }} />
             <Stack.Screen name="SignupSuccess" component={SignupSuccess} options={{ headerTitle: '', headerShown: false }} />
             <Stack.Screen name="AIHairDiagnosisScreen" component={AIHairDiagnosisScreen} options={{ headerTitle: '' , headerShown: false }} />
-            <Stack.Screen name="DiagnosisStart" component={DiagnosisStart} options={{ headerTitle: '' }} />
+            <Stack.Screen name="DiagnosisStart" component={DiagnosisStart} options={{ headerTitle: '두피 사진 등록' }} />
             <Stack.Screen name="UploadPicture" component={UploadPicture} options={{ headerTitle: ''}} />
             <Stack.Screen name="ScalpDiaryScreen" component={ScalpDiaryScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="MyPageScreen" component={MyPageScreen} options={{ headerTitle: '' , headerShown: false }} />

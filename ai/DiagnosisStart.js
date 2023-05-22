@@ -1,27 +1,35 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import BottomTabBar from '../BottomTabBar';
 import { useNavigation } from '@react-navigation/native';
+import camera from '../img/camera.png';
+import pictures from '../img/pictures.png';
+
+import { launchCamera } from 'react-native-image-picker';
 
 const DiagnosisStart = () => {
   const navigation = useNavigation();
-  const handleTakePhoto = async () => {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    if (status === 'granted') {
-      const result = await ImagePicker.launchCameraAsync();
-      if (!result.cancelled) {
-        // 촬영된 사진으로 처리할 작업을 수행합니다.
-        console.log(result);
+  const [photoUri, setPhotoUri] = useState(null);
+
+  const handleTakePhoto = () => {
+    const options = {
+      mediaType: 'photo',
+      quality: 1,
+    };
+
+    launchCamera(options, (response) => {
+      if (response.didCancel) {
+        console.log('사용자가 촬영을 취소했습니다.');
+      } else if (response.error) {
+        console.log('사진 촬영 중 오류가 발생했습니다:', response.error);
+      } else {
+        setPhotoUri(response.uri);
       }
-    } else {
-      // 카메라 접근 권한이 거부된 경우
-      console.log('카메라 접근 권한이 거부되었습니다');
-    }
+    });
   };
 
-  const handleUploadPhoto = async () => {
-    navigation.navigate('UploadPicture');
+  const handleUploadPhoto = () => {
+    navigation.navigate('UploadPicture', { photoUri });
   };
 
   return (
@@ -29,14 +37,22 @@ const DiagnosisStart = () => {
       <View style={styles.box}>
         <Text style={styles.text}>두피 사진을 입력해주세요.</Text>
         <TouchableOpacity style={styles.button} onPress={handleTakePhoto}>
+          <Image source={camera} style={styles.camera} />
           <Text style={styles.buttonText}>사진 촬영</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleUploadPhoto}>
+        {photoUri && (
+          <Image source={{ uri: photoUri }} style={styles.previewImage} />
+        )}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleUploadPhoto}
+        >
+          <Image source={pictures} style={styles.pictures} />
           <Text style={styles.buttonText}>사진 등록</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.bottomTabBarContainer} >
-        <BottomTabBar/>
+      <View style={styles.bottomTabBarContainer}>
+        <BottomTabBar />
       </View>
     </View>
   );
@@ -47,9 +63,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
   box: {
-    backgroundColor: '#f2f2f2',
+    top: '-10%',
+    backgroundColor: '#fff',
     padding: 20,
   },
   text: {
@@ -58,18 +76,35 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#008376',
+    backgroundColor: '#fff',
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 5,
-    marginBottom: 10,
+    borderRadius: 10,
+    marginTop: 20,
+    marginBottom: 20,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   buttonText: {
-    color: '#ffffff',
+    color: '#000',
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
-  },bottomTabBarContainer: {
+  },
+  previewImage: {
+    width: 200,
+    height: 200,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  bottomTabBarContainer: {
     position: 'absolute',
     left: 0,
     right: 0,
