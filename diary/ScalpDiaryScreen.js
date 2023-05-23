@@ -118,6 +118,11 @@ const ScalpDiaryScreen = () => {
     return markedDates;
   };
 
+  const createHandler = () => {
+    console.log('hi');
+    navigation.navigate('CreateRecord');
+  }
+
   return (
     <View style={styles.container}>
       {isLoading ? (
@@ -160,14 +165,19 @@ const ScalpDiaryScreen = () => {
             {renderEvents()}
             {renderDetailedReportButton()}
           </View>
-          <View style={styles.createButton}>
-            <RoundButton/>
+          
+            <View style={styles.createButton}>
+              <RoundButton  link="CreateRecord"/>
             </View>
+    
+          
         </View>
       )}
-      <View style={styles.bottomTabBarContainer}>
-        <BottomTabBar />
-      </View>
+        <View style={styles.bottomTabBarContainer}>
+          <BottomTabBar />
+        </View>
+      
+      
     </View>
   );
   

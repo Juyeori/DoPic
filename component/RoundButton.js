@@ -1,9 +1,16 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const RoundButton = () => {
+const RoundButton = ( {link} ) => {
+  const navigation = useNavigation();
+
+  const handleNavigate = () => {
+    navigation.navigate(link);
+  };
+
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={handleNavigate}>
       <View style={styles.buttonContainer}>
         <Text style={styles.buttonText}>+</Text>
       </View>

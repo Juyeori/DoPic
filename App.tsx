@@ -18,6 +18,7 @@ import SignupStart from './userInfo/SignupStart';
 import DiagnosisStart from './ai/DiagnosisStart';
 import UploadPicture from './ai/UploadPicture';
 import SignupSuccess from './userInfo/SIgnupSuccess';
+import CreateRecord from './diary/CreateRecord';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,7 @@ export default function App() {
             <Stack.Screen name="UploadPicture" component={UploadPicture} options={{ headerTitle: ''}} />
             <Stack.Screen name="ScalpDiaryScreen" component={ScalpDiaryScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="MyPageScreen" component={MyPageScreen} options={{ headerTitle: '' , headerShown: false }} />
+            <Stack.Screen name="CreateRecord" component={CreateRecord} options={{ headerTitle: '기록 생성' }} />
           </Stack.Navigator>
           {isLoggedIn && (
           <View style={styles.bottomTabBarContainer}>
