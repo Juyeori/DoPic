@@ -62,9 +62,11 @@ const LoginForm = () => {
 
   return (
     <View style={styles.container}>
-
-      <Text style={styles.title}>두픽과 함께 하는</Text>
-      <Text style={styles.title}>슬기로운 두피 관리</Text>
+      <View style={styles.guide}>
+        <Text style={styles.title}>두픽과 함께 하는</Text>
+        <Text style={styles.title}>슬기로운 두피 관리</Text>
+      </View>
+      
       <TextInput
         style={styles.input}
         placeholder="이메일"
@@ -78,15 +80,16 @@ const LoginForm = () => {
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>로그인</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('FindAccountForm')}>
-          <Text style={styles.footerText}>아이디/비밀번호 찾기</Text>
+      <View style={styles.loginButton}>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>로그인</Text>
         </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>로그아웃</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('FindAccountForm')}>
+            <Text style={styles.footerText}>아이디/비밀번호 찾기</Text>
+          </TouchableOpacity>
+      </View>
+      
+      
     </View>
   );
 };
@@ -95,15 +98,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+
+    backgroundColor: '#fff',
+  },
+  guide: {
+    top : '10%',
+    left: '-15%',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 5,
   },
   input: {
-    width: '80%',
+    top : '25%',
+    width: '90%',
     height: 40,
     borderBottomWidth: 1,
     borderColor: '#ccc',
@@ -112,6 +121,7 @@ const styles = StyleSheet.create({
     width: 328
 },
   button: {
+    top : '30%',
     backgroundColor: '#008376',
     width: 328,
     height:48,
@@ -125,7 +135,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  loginButton : {
+    top: '25%',
+    alignItems: 'center',
+  },
   footerText: {
+    top : '150%',
     color: '#999999',
     fontSize: 14,
     marginRight: 20,

@@ -7,6 +7,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RoundButton from '../component/RoundButton';
 import Header from '../component/Header';
+import { Svg, Polygon, Line, Text as SvgText} from 'react-native-svg';
 
 const ScalpDiaryScreen = () => {
   const navigation = useNavigation();
@@ -19,7 +20,7 @@ const ScalpDiaryScreen = () => {
     fetchRecords();
   }, []);
 
-  // 데이터베이스에서 최근 기록 가져오기
+  // 데이터베이스에서 기록 가져오기
   const fetchRecords = async () => {
     try {
       const id = await AsyncStorage.getItem('id');
@@ -67,8 +68,12 @@ const ScalpDiaryScreen = () => {
   };
 
   const handleDetailedReport = () => {
-    navigation.navigate('DetailedReport');
+    navigation.navigate('DetailedReport', {
+      selectedDate: selectedDate,
+      events: events,
+    });
   };
+  
 
   const theme = {
     arrowColor: '#008376', // 화살표 색상
@@ -78,30 +83,98 @@ const ScalpDiaryScreen = () => {
 
   
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}.${month}.${day}`;
+  };
+  
   const renderEvents = () => {
     if (selectedDate && events[selectedDate]) {
       return events[selectedDate].map((record, index) => (
         <View key={index}>
-          <Text>{record.result}</Text>
-          <Text>{record.memo.join(", ")}</Text>
+          <Text style={{ fontWeight: 'bold' }}>{formatDate(record.createdAt)}</Text>
+          <Text style={{ color: '#008376' }}>{`#${record.comment}`}</Text>
+          <Text>스트레스 지수: {record.memo[0]}/10</Text>
+          <Text>수면시간: {record.memo[1]}시간</Text>
         </View>
       ));
-    } else {
-      return <Text>No events</Text>;
     }
   };
+  
 
-  const renderDetailedReportButton = () => {
+  const renderPolygonEvents = () => {
     if (selectedDate && events[selectedDate]) {
-      return (
-        <TouchableOpacity style={styles.button} onPress={handleDetailedReport}>
-          <Text style={styles.buttonText}>자세히 보기</Text>
-        </TouchableOpacity>
-      );
-    } else {
-      return null;
+      return events[selectedDate].map((record, index) => {
+        const titles = [
+          '피지과다',
+          '모낭홍반',
+          '탈모',
+          '비듬',
+          '모낭사이홍반',
+          '미세각질',
+        ];
+  
+        const polygonPoints = record.result
+          .map((value, i) => {
+            const angle = (2 * Math.PI * i) / 6;
+            const radius = value * 15;
+            const x = Math.cos(angle) * radius + 50;
+            const y = Math.sin(angle) * radius + 50;
+            return `${x},${y}`;
+          })
+          .join(' ');
+  
+        const hexagonPoints = Array.from({ length: 6 }).map((_, i) => {
+          const angle = (2 * Math.PI * i) / 6;
+          const radius = 50; // 6각형의 반지름 조절
+          const x = Math.cos(angle) * radius + 50;
+          const y = Math.sin(angle) * radius + 50;
+          return `${x},${y}`;
+        }).join(' ');
+  
+        return (
+          <View key={index}>
+            <Svg width={120} height={120}>
+              <Polygon
+                points={hexagonPoints}
+                fill="#ebebeb" // 6각형 배경색
+                stroke="none" // 6각형 테두리 없음
+              />
+              <Polygon
+                points={polygonPoints}
+                fill="#008376" // 다각형 색
+                stroke="none" // 다각형 테두리 없음
+              />
+              {titles.map((title, i) => {
+                const angle = (2 * Math.PI * i) / 6;
+                const radius = 50; // 타이틀이 위치할 반지름 조절
+                const x = Math.cos(angle) * radius + 50;
+                const y = Math.sin(angle) * radius + 50;
+                return (
+                  <SvgText
+                    key={i}
+                    x={x}
+                    y={y}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fill="#000"
+                    fontSize={9}
+                  >
+                    {title}
+                  </SvgText>
+                );
+              })}
+            </Svg>
+          </View>
+        );
+      });
     }
   };
+  
+  
 
   const renderMarkedDates = () => {
     const markedDates = {};
@@ -119,7 +192,6 @@ const ScalpDiaryScreen = () => {
   };
 
   const createHandler = () => {
-    console.log('hi');
     navigation.navigate('CreateRecord');
   }
 
@@ -161,10 +233,13 @@ const ScalpDiaryScreen = () => {
             </View>
           </View>
           
-          <View style={styles.eventsContainer}>
-            {renderEvents()}
-            {renderDetailedReportButton()}
-          </View>
+          <TouchableOpacity style={styles.eventsContainer} onPress={handleDetailedReport}>
+            <View style={styles.data}>
+              {renderEvents()}
+            </View>
+            <View style={styles.Polygon}>{renderPolygonEvents()}</View>
+          </TouchableOpacity>
+          
           
             <View style={styles.createButton}>
               <RoundButton  link="CreateRecord"/>
@@ -276,10 +351,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#fff",
     width: '90%',
-    height: '12%',
+    height: '15%',
     bottom : '5%',
     alignItems: 'center',
-    
+    justifyContent : 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -289,6 +364,15 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  Polygon : {
+    left: '-25%',
+    top : '-25%',
+
+  },
+  data: {
+    top : '50%',
+    right: '-15%',
+  },  
   ccc : {
     top:'-10%',
     width: '90%',

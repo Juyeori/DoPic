@@ -40,7 +40,8 @@ const MainScreen = ({ navigation }) => {
           fontSize: 10,
           lineHeight: 10,
           textAlign: 'center',
-          color: '#999999'
+          color: '#999999',
+          bottom: '20%',
         }}>
           Copyright ⓒ SongJihee All rights Reserved.
         </Text>
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   footer: {
+    bottom: '-10%',
     flexDirection: 'row',
     marginTop: 200,
   },

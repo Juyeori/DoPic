@@ -19,6 +19,7 @@ import DiagnosisStart from './ai/DiagnosisStart';
 import UploadPicture from './ai/UploadPicture';
 import SignupSuccess from './userInfo/SIgnupSuccess';
 import CreateRecord from './diary/CreateRecord';
+import DetailedReport from './diary/DetailedReport';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,7 +47,7 @@ export default function App() {
             <Stack.Screen name="LoginForm" component={LoginForm} options={{ animation: 'default',headerTitle: '로그인' }}  />
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ animation: 'default', headerTitle: '', headerShown: false }} />
             <Stack.Screen name="SignupStart" component={SignupStart} options={{ animation: 'default', headerTitle:'회원가입'}}/>
-            <Stack.Screen name="SignupForm" component={SignupForm} options={{ headerTitle: '' }} />
+            <Stack.Screen name="SignupForm" component={SignupForm} options={{ headerTitle: '회원가입' }} />
             <Stack.Screen name="SignupSuccess" component={SignupSuccess} options={{ headerTitle: '', headerShown: false }} />
             <Stack.Screen name="AIHairDiagnosisScreen" component={AIHairDiagnosisScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="DiagnosisStart" component={DiagnosisStart} options={{ headerTitle: '두피 사진 등록' }} />
@@ -54,6 +55,18 @@ export default function App() {
             <Stack.Screen name="ScalpDiaryScreen" component={ScalpDiaryScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="MyPageScreen" component={MyPageScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="CreateRecord" component={CreateRecord} options={{ headerTitle: '기록 생성' }} />
+            <Stack.Screen
+              name="DetailedReport"
+              component={DetailedReport}
+              options={({ route }) => ({
+                headerTitle: `${route.params.selectedDate} 리포트`,
+                headerTitleStyle: {
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                },
+                headerTitleAlign: 'center',
+              })}
+            />
           </Stack.Navigator>
           {isLoggedIn && (
           <View style={styles.bottomTabBarContainer}>

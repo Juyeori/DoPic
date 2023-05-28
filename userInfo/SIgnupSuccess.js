@@ -1,23 +1,32 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Logo from '../img/Logo.png';
 
 const SignupSuccess = () => {
   const navigation = useNavigation();
+  const [timer, setTimer] = useState(3);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.navigate('Main');
-    }, 3000);
+    const interval = setInterval(() => {
+      setTimer((prevTimer) => prevTimer - 1);
+    }, 1000);
 
-    return () => clearTimeout(timer);
-  }, [navigation]);
+    if (timer === 0) {
+      clearInterval(interval);
+      navigation.navigate('Main');
+    }
+
+    return () => clearInterval(interval);
+  }, [navigation, timer]);
 
   return (
     <View style={styles.container}>
       <View style={styles.messageContainer}>
         <Text style={styles.messageText}>회원가입을 환영합니다!</Text>
+        <Text style={styles.timerText}>{`${timer}초 후에 홈으로 이동합니다.`}</Text>
       </View>
+      <Image source={Logo} style={styles.logo} />
     </View>
   );
 };
@@ -31,14 +40,24 @@ const styles = StyleSheet.create({
     paddingTop: '20%',
     paddingRight: 20,
   },
+  logo: {
+    top: '42%',
+    left: '-10%',
+    width: 300,
+    height: 300,
+  },
   messageContainer: {
-    backgroundColor: '#e8e8e8',
     padding: 10,
     borderRadius: 5,
   },
   messageText: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
+    textAlign: 'right',
+  },
+  timerText: {
+    fontSize: 14,
+    color: '#008376',
     textAlign: 'right',
   },
 });
