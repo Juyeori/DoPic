@@ -1,44 +1,51 @@
 import React, { useState } from 'react';
-import { View, Image, Button } from 'react-native';
-import * as ImagePicker from 'react-native-image-picker';
+import { View, Image, Button, ActivityIndicator, Text } from 'react-native';
+import { launchImageLibrary } from 'react-native-image-picker';
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import logo from '../img/Logo.png';
 
 const UploadPicture = () => {
   const [imageUris, setImageUris] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
   const handleChooseImage = () => {
-    ImagePicker.launchImageLibrary({ mediaType: 'photo', maxFiles: 4 }, (response) => {
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-      } else {
-        const selectedImageUris = response.assets.map((asset) => asset.uri);
-        setImageUris(selectedImageUris);
+    launchImageLibrary(
+      { mediaType: 'photo', maxFiles: 4, includeBase64: true },
+      (response) => {
+        if (response.didCancel) {
+          console.log('User cancelled image picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          const selectedImageUris = response.assets.map((asset) => asset.base64);
+          setImageUris(selectedImageUris);
+        }
       }
-    });
+    );
   };
 
-  const handleUpload = () => {
-    imageUris.forEach((uri) => {
-      const formData = new FormData();
-      formData.append('image', {
-        uri,
-        type: 'image/jpeg',
-        name: 'photo.jpg',
-      });
+  const handleUpload = async () => {
+    try {
+      setLoading(true); // 스피너 표시
 
-      console.log(formData);
-    //   axios.post('https://example.com/upload', formData)
-    //     .then((response) => {
-    //       console.log('Image upload success:', response.data);
-    //     })
-    //     .catch((error) => {
-    //       console.log('Image upload error:', error);
-    //     });
-    });
+      for (const base64Data of imageUris) {
+
+        const response = await axios.post('http://127.0.0.1:8080/predict_base64', {'data': base64Data});
+
+        console.log('Image upload success');
+        console.log('Server response:', response.data[0].predictions);
+      }
+
+      setLoading(false); // 스피너 감추기
+      navigation.navigate('Result'); // 네비게이션 수행
+    } catch (error) {
+      console.log('Image upload error:', error);
+      setLoading(false); // 스피너 감추기
+    }
   };
 
   return (
@@ -50,6 +57,15 @@ const UploadPicture = () => {
         ))}
       </View>
       <Button title="사진 전송" onPress={handleUpload} />
+      {loading && 
+      <View>
+        <Text>
+          AI두피진단중입니다.
+        </Text>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Image source={logo}/>
+      </View>
+      }
     </View>
   );
 };

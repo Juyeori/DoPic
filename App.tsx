@@ -20,6 +20,7 @@ import UploadPicture from './ai/UploadPicture';
 import SignupSuccess from './userInfo/SIgnupSuccess';
 import CreateRecord from './diary/CreateRecord';
 import DetailedReport from './diary/DetailedReport';
+import Result from './ai/Result';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +56,7 @@ export default function App() {
             <Stack.Screen name="ScalpDiaryScreen" component={ScalpDiaryScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="MyPageScreen" component={MyPageScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="CreateRecord" component={CreateRecord} options={{ headerTitle: '기록 생성' }} />
+            <Stack.Screen name="Result" component={Result} options={{ headerTitle: '' }} />
             <Stack.Screen
               name="DetailedReport"
               component={DetailedReport}
