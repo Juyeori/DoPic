@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   header : {
-    top: "-8%",
+    top: '-3%',
     width: '100%',
   },
   container: {

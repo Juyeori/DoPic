@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
 import { Svg, Polygon, Line, Text as SvgText} from 'react-native-svg';
 import BottomTabBar from '../BottomTabBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import s1 from '../img/s1.png';
+import s2 from '../img/s2.png';
+import s3 from '../img/s3.png';
+import s4 from '../img/s4.png';
+
 
 const DetailedReport = ({ route }) => {
     const { selectedDate, events } = route.params;
@@ -45,9 +50,10 @@ const DetailedReport = ({ route }) => {
   const renderPolygonEvents = () => {
     if (selectedDate && events[selectedDate]) {
       return events[selectedDate].map((record, index) => {
+
         const titles = [
-          '피지과다',
-          '모낭홍반',
+          '피지',
+          '모낭홍반농포',
           '탈모',
           '        비듬',
           '모낭사이홍반',
@@ -83,7 +89,7 @@ const DetailedReport = ({ route }) => {
               <Polygon
                 points={polygonPoints}
                 fill="#008376" // 다각형 색
-                stroke="none" // 다각형 테두리 없음
+                stroke="#008376" // 다각형 테두리 없음
               />
               {titles.map((title, i) => {
                 const angle = (2 * Math.PI * i) / 6;
@@ -128,22 +134,27 @@ const DetailedReport = ({ route }) => {
             탈모성 두피는 피지가 많아 머리카락과 함께 떨어지는 경우가 많습니다. 따라서 세정력이 강한 샴푸나 두피 클렌저를 적당한 빈도로 사용해야 합니다.
             과도한 사용은 두피를 건조하게 만드므로 유의해야 합니다. 가급적 염색이나 펌을 자제하고, 영양제를 섭취하는 것을 추천합니다. 스트레스를 줄이고,
             규칙적인 생활습관을 통해 건강한 두피를 위한 노력이 필요합니다.
+            
         </Text>
       </View>
       <View style={styles.productSection}>
         <Text style={styles.title}>맞춤 제품 추천</Text>
         <View style={styles.productContainer}>
           <View style={styles.productBox}>
-            <Text style={styles.productText}>제품명</Text>
+            <Image source={s1} style={{width : 50, height: 50}}/>
+            <Text style={styles.productText}>TS</Text>
           </View>
           <View style={styles.productBox}>
-            <Text style={styles.productText}>제품명</Text>
+            <Image source={s2} style={{width : 50, height: 50}}/>
+            <Text style={styles.productText}>아브카</Text>
           </View>
           <View style={styles.productBox}>
-            <Text style={styles.productText}>제품명</Text>
+            <Image source={s3} style={{width : 50, height: 50}}/>
+            <Text style={styles.productText}>닥터방기원</Text>
           </View>
           <View style={styles.productBox}>
-            <Text style={styles.productText}>제품명</Text>
+            <Image source={s4} style={{width : 50, height: 50}}/>
+            <Text style={styles.productText}>라보에이지</Text>
           </View>
         </View>
       </View> 
@@ -171,7 +182,7 @@ const styles = StyleSheet.create({
     Poligon : {
         height: 1,
         justifyContent:'center',
-        top: '-10%',
+        top: '-5%',
         left: '15%',
     }, 
     container: {
@@ -197,7 +208,7 @@ const styles = StyleSheet.create({
     },
     productSection : {
         position: 'absolute',
-        top : "75%",
+        top : "73%",
         width: "100%",
         paddingLeft: 20,
         paddingRight: 20,

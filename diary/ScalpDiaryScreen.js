@@ -146,7 +146,7 @@ const ScalpDiaryScreen = () => {
               <Polygon
                 points={polygonPoints}
                 fill="#008376" // 다각형 색
-                stroke="none" // 다각형 테두리 없음
+                stroke="#008376" // 다각형 테두리 없음
               />
               {titles.map((title, i) => {
                 const angle = (2 * Math.PI * i) / 6;
@@ -207,13 +207,7 @@ const ScalpDiaryScreen = () => {
           <View style={styles.header}>
             <Header title="두피 일기장"/>
           </View>
-          {latestRecord && (
-            <View style={styles.latestContainer}>
-              <Text>가장 최근 정보:</Text>
-              <Text>{latestRecord.result}</Text>
-              <Text>{latestRecord.memo.join(", ")}</Text>
-            </View>
-          )}
+          
           <View style={styles.ccc}>
             <View style={styles.calendarContainer}>
               <Calendar
@@ -227,7 +221,7 @@ const ScalpDiaryScreen = () => {
                 }, {})}
                 theme={theme}
                 style={styles.calender}
-                hideExtraDays
+                
                 
               />
             </View>
@@ -266,7 +260,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header : {
-    top : '-15%',
+    top : '-18%',
     width: '100%',
   },
   latestContainer: {

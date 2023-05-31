@@ -6,6 +6,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Header from './component/Header';
 import Logo from './img/Logo.png'
 import self from './img/self.png';
+import s1 from './img/s1.png';
+import s2 from './img/s2.png';
+import s3 from './img/s3.png';
+import s4 from './img/s4.png';
+import latest from './img/latest.png';
+
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -23,23 +29,27 @@ const HomeScreen = () => {
       <View style={styles.lastedSection}>
         <Text style={styles.title}>최근 두피 상태</Text>
         <View style={styles.box}>
-          {/* Content for the recent scalp condition */}
+          <Image source={latest} style={{width : 300, height: 80}}/>
         </View>
       </View>
       <View style={styles.productSection}>
         <Text style={styles.title}>맞춤 제품 추천</Text>
         <View style={styles.productContainer}>
           <View style={styles.productBox}>
-            <Text style={styles.productText}>제품명</Text>
+            <Image source={s1} style={{width : 50, height: 50}}/>
+            <Text style={styles.productText}>TS</Text>
           </View>
           <View style={styles.productBox}>
-            <Text style={styles.productText}>제품명</Text>
+            <Image source={s2} style={{width : 50, height: 50}}/>
+            <Text style={styles.productText}>아브카</Text>
           </View>
           <View style={styles.productBox}>
-            <Text style={styles.productText}>제품명</Text>
+            <Image source={s3} style={{width : 50, height: 50}}/>
+            <Text style={styles.productText}>닥터방기원</Text>
           </View>
           <View style={styles.productBox}>
-            <Text style={styles.productText}>제품명</Text>
+            <Image source={s4} style={{width : 50, height: 50}}/>
+            <Text style={styles.productText}>라보에이지</Text>
           </View>
         </View>
       </View>
@@ -69,7 +79,7 @@ const styles = StyleSheet.create({
     left: "2%",
   },
   header : {
-    top : '-18%',
+    top : '-16%',
     width: '100%',
   },
   container: {

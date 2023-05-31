@@ -56,7 +56,7 @@ export default function App() {
             <Stack.Screen name="ScalpDiaryScreen" component={ScalpDiaryScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="MyPageScreen" component={MyPageScreen} options={{ headerTitle: '' , headerShown: false }} />
             <Stack.Screen name="CreateRecord" component={CreateRecord} options={{ headerTitle: '기록 생성' }} />
-            <Stack.Screen name="Result" component={Result} options={{ headerTitle: '' }} />
+            <Stack.Screen name="Result" component={Result} options={{ headerTitle: 'AI 진단결과' }} />
             <Stack.Screen
               name="DetailedReport"
               component={DetailedReport}
