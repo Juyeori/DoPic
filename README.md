@@ -1,6 +1,10 @@
 # DoPic
 
+---
+
 ## 2023 아주대학교 AI융합 캡스톤디자인 Dopic Client 레포입니다.
+
+---
 
 <table>
  <tr>
@@ -40,9 +44,13 @@
  </tr>
 </table>
 
+---
+
 ## Github Repo
 * 백엔드(node.js) : https://github.com/Juyeori/dopic_server
 * AI모델(Flask, Pytorch) : https://github.com/Juyeori/dopic_api
+
+---
 
 ## 💽로컬 설치 안내(Installation Process)
 
@@ -52,10 +60,14 @@ git clone https://github.com/juyeori/dopic.git
 npm install
 ```
 
+---
+
 ## 🗂️가상 환경 실행 안내
 ```bash
 npx react-native run-android
 ```
+
+---
 
 ## 🗂️실제 기기 실행 안내
 ```bash
