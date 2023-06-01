@@ -13,7 +13,7 @@
  </tr>
    
  <tr>
-  <td align='center'><img src="https://avatars.githubusercontent.com/u/76638529?v=4" width="50" height="50"></td>
+  <td align='center'><img src="https://avatars.githubusercontent.com/u/77771635?v=4" width="50" height="50"></td>
   <td align='center'>Jihui Song</td>
   <td align='center'>201821413</td>
   <td align='center'>PM / UI/UX</td>
@@ -22,7 +22,7 @@
  </tr>
  
  <tr>
-  <td align='center'><img src="https://avatars.githubusercontent.com/u/96776691?v=4" width="50" height="50"></td>
+  <td align='center'><img src="https://avatars.githubusercontent.com/u/109195660?v=4" width="50" height="50"></td>
   <td align='center'>Sungju Cho</td>
   <td align='center'>201821518</td>
   <td align='center'>AI Model</td>
