@@ -38,7 +38,7 @@
   <td align='center'><img src="https://user-images.githubusercontent.com/98978787/226175108-63792c9b-1d80-45f9-958c-b1d2824f64f1.png" width="50" height="50"></td>
   <td align='center'>Juyeon Lee</td>
   <td align='center'>201821488</td>
-  <td align='center'>App Client / App Server</td>
+  <td align='center'>App Client / Server</td>
   <td align='center'><a href="https://github.com/Juyeori"><img src="http://img.shields.io/badge/Juyeori-green?style=social&logo=github"/></a></td>
   <td align='center'><a href="mailto:dlwndus0728@ajou.ac.kr"><img src="https://img.shields.io/badge/dlwndus0728@ajou.ac.kr-green?logo=gmail&style=social"/></a></td>
  </tr>
