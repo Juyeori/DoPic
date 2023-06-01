@@ -1,6 +1,6 @@
 # DoPic
 
-## 2023 아주대학교 캡스톤디자인 Dopic Client 레포입니다.
+## 2023 아주대학교 AI융합 캡스톤디자인 Dopic Client 레포입니다.
 
 <table>
  <tr>
