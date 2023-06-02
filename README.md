@@ -1,4 +1,4 @@
-# <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/f1eb4d92-fbfd-49a0-a9e7-5369a87cb155.png" width=50 height=50/></p> DoPic : AI 기반 두피 진단 및 관리 보조 서비스
+# <p><img src="https://github.com/Juyeori/DoPic/assets/98978787/f1eb4d92-fbfd-49a0-a9e7-5369a87cb155.png" width=150 height=150/></p> DoPic : AI 기반 두피 진단 및 관리 보조 서비스
 
 <br/>
 <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/2fd2d2c9-a7bd-4829-9fb8-1fff70901c5c.png" width=600 height=300/></p>
