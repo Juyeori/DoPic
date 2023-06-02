@@ -138,7 +138,7 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
   <td align='center'>201821413</td>
   <td align='center'>PM / UI/UX</td>
   <td align='center'><a href="https://github.com/tjdnjf47"><img src="http://img.shields.io/badge/tjdnjf47-green?style=social&logo=github"/></a></td>
-  <td align='center'><a href="mailto:tjdnjf47@ajou.ac.kr"><img src="https://img.shields.io/badge/seojune408@gmail.com-green?logo=gmail&style=social"/></a></td>
+  <td align='center'><a href="mailto:tjdnjf47@ajou.ac.kr"><img src="https://img.shields.io/badge/tjdnj47@ajou.ac.kr-green?logo=gmail&style=social"/></a></td>
  </tr>
  
  <tr>
