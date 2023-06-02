@@ -48,7 +48,7 @@
 
 ## Github Repo
 * 백엔드(node.js) : https://github.com/Juyeori/dopic_server
-* AI모델(Flask, Pytorch) : https://github.com/Juyeori/dopic_api
+* AI모델(Fast API, Pytorch) : https://github.com/Juyeori/dopic_api
 
 ---
 
