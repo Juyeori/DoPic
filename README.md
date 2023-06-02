@@ -1,10 +1,10 @@
-# <img width="144" alt="image" src="https://github.com/Juyeori/DoPic/assets/98978787/238112fd-4882-4cf4-965e-702e5cd30921"> DoPic : AI 기반 두피 진단 및 관리 보조 서비스
+# DoPic : AI 기반 두피 진단 및 관리 보조 서비스
 
-
+<br/>
 <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/2fd2d2c9-a7bd-4829-9fb8-1fff70901c5c.png" width=600 height=300/></p>
+<br/>
 <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/4570e613-f857-48d9-a154-cf2aff4dd9ee.png" width=600 height=300/></p>
-<img width="549" alt="image" src="https://github.com/Juyeori/DoPic/assets/98978787/2fd2d2c9-a7bd-4829-9fb8-1fff70901c5c">
-<img width="471" alt="image" src="https://github.com/Juyeori/DoPic/assets/98978787/4570e613-f857-48d9-a154-cf2aff4dd9ee">
+<br/>
 
 ---
 ## 🗂️ 개발 동기 및 목적
