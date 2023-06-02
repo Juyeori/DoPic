@@ -52,7 +52,8 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
  
   <br/>
   - Sequence Diagram
-  ![image](https://github.com/Juyeori/DoPic/assets/98978787/a4ce2a73-5a5b-4745-bff4-b1a9e1b147de)
+ <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/a4ce2a73-5a5b-4745-bff4-b1a9e1b147de.png" width=600 height=300/></p>
+  
   </details>
 <br/>
 
@@ -66,14 +67,18 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
 
 <details>
  <summary>2) 관련 문서</summary>
+ <br/>
   - UseCase Diagram<br/>
-  ![image](https://github.com/Juyeori/DoPic/assets/98978787/0f7f4db2-98c2-4b38-970e-1767dcc26eaa)
+ <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/0f7f4db2-98c2-4b38-970e-1767dcc26eaa.png" width=600 height=300/></p>
+  
   <br/>
   - Activity Diagram<br/>
-  ![image](https://github.com/Juyeori/DoPic/assets/98978787/7a88c27a-af3e-489d-be70-3ba60e43881b)
+ <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/7a88c27a-af3e-489d-be70-3ba60e43881b.png" width=600 height=300/></p>
+  
   <br/>
   - Sequence Diagram<br/>
-  ![image](https://github.com/Juyeori/DoPic/assets/98978787/b28830ab-2087-426c-9281-27c5703c0b54)
+ <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/b28830ab-2087-426c-9281-27c5703c0b54.png" width=600 height=300/></p>
+  
  <br/>
 </details>
 <br/>
@@ -87,8 +92,10 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
 
 <details>
  <summary>2) 관련 문서</summary>
+ <br/>
   - UseCase Diagram<br/>
-  ![image](https://github.com/Juyeori/DoPic/assets/98978787/fc48e10f-c636-4da3-b0a9-dbc96f74d9a5)
+ <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/fc48e10f-c636-4da3-b0a9-dbc96f74d9a5.png" width=600 height=300/></p>
+  
 </details>
 <br/>
   
