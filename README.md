@@ -134,7 +134,7 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
    
  <tr>
   <td align='center'><img src="https://avatars.githubusercontent.com/u/77771635?v=4" width="50" height="50"></td>
-  <td align='center'>Jihui Song</td>
+  <td align='center'>Jihee Song</td>
   <td align='center'>201821413</td>
   <td align='center'>PM / UI/UX</td>
   <td align='center'><a href="https://github.com/tjdnjf47"><img src="http://img.shields.io/badge/tjdnjf47-green?style=social&logo=github"/></a></td>
