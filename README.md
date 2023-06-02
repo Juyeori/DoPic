@@ -43,7 +43,8 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
  <summary>2) 관련 문서</summary>
   - UseCase Diagram
  <br/>
-  ![image](https://github.com/Juyeori/DoPic/assets/98978787/ed7b6485-d12b-4b14-a34f-c75fb40a4d8c)
+  <p align='center'><img src="https://github.com/Juyeori/DoPic/assets/98978787/ed7b6485-d12b-4b14-a34f-c75fb40a4d8c.png"/></p>
+ 
   <br/>
   - Activity Diagram
   ![image](https://github.com/Juyeori/DoPic/assets/98978787/7f5db738-39f5-4702-aea7-e50d1952e486)
