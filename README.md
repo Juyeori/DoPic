@@ -7,21 +7,28 @@
 ---
 ## 🗂️ 개발 동기 및 목적
 ---
-1. 두피 질환 고민 증가 & 두피 관련 고민 연령대 확대
+<details>
+ <summary>1. 두피 질환 고민 증가 & 두피 관련 고민 연령대 확대</summary>
  - 20대에서 50대 성인 62.3%가 헤어 및 두피 관련 고민 보유
  - 탈모증 질환 진료 인원 2020년 23만 3천명
  - 연령대별 진료 인원 20대 20.7%, 30대 22.2%
+</details>
 
-2. 필요성에 비해 소극적인 두피 관리
+<details>
+ <sumamry>2. 필요성에 비해 소극적인 두피 관리</summary>
  - 두피 관리 필요성 인식 79.8%
  - 두피 관리 실천 인원 20.7%
  - 월 평균 두피 관리 투자 시간 1시간 미만, 5만원 미만
+</details>
 
-3. 비용 부담과 정보 부족으로 관리의 어려움
+<details>
+ <summary>3. 비용 부담과 정보 부족으로 관리의 어려움</summary>
  - 2545 남성의 60%가 본인의 두피 유형을 모름
  - 정확한 두피 상태를 알지 못하면서 병원에도 가기 어려워함
-
+</details>
+ 
 __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 발현 초기부터 지속적인 관리를 도와주는 서비스 '두픽' 기획__
+
 ---
 📠 핵심 기능 설명 및 관련 문서
 ---
@@ -35,7 +42,7 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
  <details>
  <summary>2) 관련 문서</summary>
   - UseCase Diagram
-  ![image](https://github.com/Juyeori/DoPic/assets/98978787/2d48a635-3655-45a5-a4f3-ffcecb16bf0a)
+  ![image](https://github.com/Juyeori/DoPic/assets/98978787/ed7b6485-d12b-4b14-a34f-c75fb40a4d8c)
   
   - Activity Diagram
   ![image](https://github.com/Juyeori/DoPic/assets/98978787/7f5db738-39f5-4702-aea7-e50d1952e486)
@@ -50,7 +57,8 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
   - 진단 기록 이외에도, 해당 날짜에 사용자의 추가적인 입력(ex: 수면 시간, 스트레스 정도, 사용 헤어 케어 제품 등)을 할 수 있음
   - 일기장의 기대효과로는, 진단 기록과 더불어, 두피에 대한 사용자의 생활 습관을 기록하며 두피에 좋은 생활 습관으로 개선할 수 있도록 유도함. (ex : 어떤 생활 습관으로 계속 지내다보니, 두피가 개선되었다는 것을 파악하는 것)
 
- 2) 관련 문서
+<details>
+ <summary>2) 관련 문서</summary>
   - UseCase Diagram
   ![image](https://github.com/Juyeori/DoPic/assets/98978787/0f7f4db2-98c2-4b38-970e-1767dcc26eaa)
   
@@ -59,17 +67,18 @@ __요약 : 두피 관리 방법을 잘 모르는 사람들을 위해 질환의 �
   
   - Sequence Diagram
   ![image](https://github.com/Juyeori/DoPic/assets/98978787/b28830ab-2087-426c-9281-27c5703c0b54)
-
+</details>
 
 3. 맞춤 제품 추천
  1) 기능 명세
   - 두피 진단 유형에 따른 헤어 케어 제품을 추천
   - 현재, 탈모 관련 상품이 어떠한 두피 유형이든 도움이 되는 관계로, 알고리즘 관련 재논의중.
 
- 2) 관련 문서
+<details>
+ <summary>2) 관련 문서</summary>
   - UseCase Diagram
   ![image](https://github.com/Juyeori/DoPic/assets/98978787/fc48e10f-c636-4da3-b0a9-dbc96f74d9a5)
-
+</details>
   
 ---
 🕋팀 정보 (Team Information)
