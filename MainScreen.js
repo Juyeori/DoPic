@@ -43,7 +43,6 @@ const MainScreen = ({ navigation }) => {
           color: '#999999',
           bottom: '20%',
         }}>
-          Copyright ⓒ SongJihee All rights Reserved.
         </Text>
       </View>
     </View>
